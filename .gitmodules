@@ -1,0 +1,6 @@
+[submodule "submodules/nvblox"]
+	path = submodules/nvblox
+	url = https://github.com/nvidia-isaac/nvblox.git
+[submodule "submodules/IsaacLab"]
+	path = submodules/IsaacLab
+	url = https://github.com/isaac-sim/IsaacLab.git

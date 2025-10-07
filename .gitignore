@@ -1,0 +1,36 @@
+output/
+.ipynb_checkpoints
+output*
+.cache*
+.mypy_cache
+*.sif
+*.pyc
+__pycache__
+.DS_Store
+._.DS_Store
+*.pkl
+*.mp4
+*.swp
+*.egg-info/
+**/__pycache__
+peract_model
+diffusion_taskABC_D-C192-B30-lr3e-4-DI1-20-Phistory_selfattn_epsilon_instrcond-H3-DT25-backboneclip-S256,256-R1-wd5e-3
+# train/test directory
+train_logs/
+eval_logs/
+temp/
+# Generated and untarred baseline data
+generated_data/
+demo_00000/
+
+# data directory
+wandb
+
+# workflow generation
+generated_workflow.yaml
+
+# Documentation
+core_docs_venv/
+*docs/_build
+*docs/doxyoutput
+*docs/api
