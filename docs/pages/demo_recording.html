@@ -1,0 +1,824 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Recording Demonstrations &#8212; mindmap 1.0.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/nvidia-sphinx-theme.css?v=df3ac72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=42eea36e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/demo_recording';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generating a Dataset" href="data_generation.html" />
+    <link rel="prev" title="Creating New Tasks" href="create_task.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="mindmap 1.0.0 - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="mindmap 1.0.0 - Home"/>
+  
+  
+    <p class="title logo__title">mindmap 1.0.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nvidia-isaac/nvblox_mindmap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="mindmap 1.0.0 - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="mindmap 1.0.0 - Home"/>
+  
+  
+    <p class="title logo__title">mindmap 1.0.0</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nvidia-isaac/nvblox_mindmap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">mindmap Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting up mindmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_workflows.html">Example Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mindmap_tasks.html">mindmap Tasks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="create_task.html">Creating New Tasks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Recording Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_generation.html">Generating a Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training a Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="open_loop_evaluation.html">Open Loop Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="closed_loop_evaluation.html">Closed Loop Evaluation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Downloads</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="download_datasets.html">Download Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download_models.html">Download Checkpoints</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Recording Demonstrations</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="recording-demonstrations">
+<h1>Recording Demonstrations<a class="headerlink" href="#recording-demonstrations" title="Link to this heading">#</a></h1>
+<p>You can either record your own demonstrations by teleoperating a robot in Isaac Lab or use the provided datasets.
+See the following sections on how to record demonstrations for the Franka robot arm (using a <a class="reference external" href="https://3dconnexion.com/us/product/spacemouse-compact/">SpaceMouse</a>)
+and the GR1 humanoid (using an <a class="reference external" href="https://www.apple.com/vision-pro/">Apple Vision Pro</a>).
+For more details on teleoperation and imitation learning in Isaac Lab, see the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html">Isaac Lab documentation</a>.</p>
+<p>Visit <a class="reference internal" href="download_datasets.html"><span class="doc">Download Datasets</span></a> to learn how to download HDF5 files for each task containing pre-recorded demonstrations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All tasks are run with the Isaac Lab physics simulation in CPU mode.
+We found it to be more stable for the Isaac Lab 2.1.0 release (which we support in mindmap).
+These stability issues are fixed in newer versions of Isaac Lab.</p>
+</div>
+<section id="recording-franka-demonstrations">
+<h2>Recording Franka Demonstrations<a class="headerlink" href="#recording-franka-demonstrations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="gallery table">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/teleop_view_cube_stacking.png"><img alt="../_images/teleop_view_cube_stacking.png" src="../_images/teleop_view_cube_stacking.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Teleoperation View for Cube Stacking task.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/teleop_view_mug_in_drawer.png"><img alt="../_images/teleop_view_mug_in_drawer.png" src="../_images/teleop_view_mug_in_drawer.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Teleoperation View for Mug in Drawer task.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For recording demonstrations for the Franka robot arm, we support the <a class="reference external" href="https://3dconnexion.com/us/product/spacemouse-compact/">SpaceMouse</a> as a teleoperation device.</p>
+<p>To record demonstrations using the SpaceMouse and generate additional demonstrations using Isaac Lab Mimic, you need to:</p>
+<ol class="arabic simple">
+<li><p>Connect the SpaceMouse to your computer first, then enter the <a class="reference internal" href="setup.html"><span class="doc">interactive docker container</span></a>.</p></li>
+<li><p>Inside the interactive docker container, navigate to the Isaac Lab submodule directory:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../submodules/IsaacLab
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Record demonstrations by teleoperating the robot with the SpaceMouse as instructed on the console after running the following command (find additional information <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html#collecting-demonstrations">here</a>). The recorded demonstrations will be stored in the HDF5 dataset file.</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Cube Stacking</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Mug in Drawer</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stack-Cube-Franka-IK-Rel-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>spacemouse<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Mug-in-Drawer-Franka-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>spacemouse<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the SpaceMouse is not detected follow the instructions in the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html">Isaac Lab teleoperation documentation</a>.
+Additionally, left-clicking inside the rendered Isaac Lab scene can help activate teleoperation if it does not start working immediately.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To complete a demonstration you need to fullfill the success criteria of the task.
+For <code class="docutils literal notranslate"><span class="pre">Cube</span> <span class="pre">Stacking</span></code> the order of the stacked cubes should be blue (bottom), red (middle), green (top).
+For <code class="docutils literal notranslate"><span class="pre">Mug</span> <span class="pre">in</span> <span class="pre">Drawer</span></code> the mug should be placed in the drawer containing other mugs and the gripper should be opened.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>The recorded demonstrations need to be segmented into subtasks before the next step. This is done
+by manual annotation, following the instructions printed to the terminal after running the
+following command:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Cube Stacking</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mug in Drawer</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stack-Cube-Franka-IK-Rel-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Mug-in-Drawer-Franka-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="5">
+<li><p>Generate additional demonstrations using Isaac Lab Mimic from the annotated demonstrations (find more detail in the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html#generating-additional-demonstrations">Generating additional demonstrations</a> section of the Isaac Lab Mimic documentation).</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Cube Stacking</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mug in Drawer</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stack-Cube-Franka-IK-Rel-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Mug-in-Drawer-Franka-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<p>After completing the above steps, you end up with an HDF5 file containing <code class="docutils literal notranslate"><span class="pre">&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;</span></code> demonstrations.
+This file will be needed for <a class="reference internal" href="data_generation.html"><span class="doc">data generation</span></a> and <a class="reference internal" href="closed_loop_evaluation.html"><span class="doc">closed loop evaluation</span></a>.</p>
+</section>
+<section id="recording-gr1-demonstrations">
+<h2>Recording GR1 Demonstrations<a class="headerlink" href="#recording-gr1-demonstrations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="gallery table">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/xr_view_drill_in_box.png"><img alt="../_images/xr_view_drill_in_box.png" src="../_images/xr_view_drill_in_box.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">XR Teleoperation View for Drill in Box task.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/xr_view_stick_in_bin.png"><img alt="../_images/xr_view_stick_in_bin.png" src="../_images/xr_view_stick_in_bin.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">XR Teleoperation View for Stick in Bin task.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For recording demonstrations for the GR1 humanoid, we support the <a class="reference external" href="https://www.apple.com/vision-pro/">Apple Vision Pro</a> as a teleoperation device.
+Find additional details on recording demonstrations for the GR1 humanoid in the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html#demo-data-generation-and-policy-training-for-a-humanoid-robot">Isaac Lab humanoid data generation documentation</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our GR1 mindmap tasks require two separate Isaac Lab Mimic tasks each, one for grasping the target object with the left and one for the right hand.
+The reason for this is that Isaac Lab Mimic requires specifying a subtask such as grasping for a specific hand.
+Therefore, we record demonstrations for each hand separately and combine them into a single HDF5 file after the Isaac Lab Mimic generation.</p>
+</div>
+<p>To record demonstrations using the Apple Vision Pro and generate additional demonstrations using Isaac Lab Mimic, you need to:</p>
+<ol class="arabic simple">
+<li><p>Install the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/how-to/cloudxr_teleoperation.html#build-and-install-the-isaac-xr-teleop-sample-client-app-for-apple-vision-pro">Isaac XR Teleop Sample Client App</a> on your Apple Vision Pro.</p></li>
+<li><p>Start the CloudXR Runtime Docker container on your Isaac Lab workstation (corresponds to option 2 from the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/how-to/cloudxr_teleoperation.html#run-isaac-lab-with-the-cloudxr-runtime">CloudXR Runtime documentation</a>):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>submodules/IsaacLab<span class="w"> </span><span class="o">&amp;&amp;</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>cloudxr-runtime<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--user<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="s2">&quot;ACCEPT_EULA=Y&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/openxr,dst<span class="o">=</span>/openxr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">48010</span>:48010<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">47998</span>:47998/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">47999</span>:47999/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">48000</span>:48000/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">48005</span>:48005/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">48008</span>:48008/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">48012</span>:48012/udp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>nvcr.io/nvidia/cloudxr-runtime:0.1.0-isaac
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>In a separate terminal, start the <a class="reference internal" href="setup.html"><span class="doc">interactive docker container</span></a> and navigate to the Isaac Lab submodule directory:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../submodules/IsaacLab
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Start the Isaac Lab record script inside the terminal where you started the interactive docker container:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Drill in Box Left</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Drill in Box Right</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">Stick in Bin Left</button><button aria-controls="panel-3-3-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-3" name="3-3" role="tab" tabindex="-1">Stick in Bin Right</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Left-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>dualhandtracking_abs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Right-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>dualhandtracking_abs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Left-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>dualhandtracking_abs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-3" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-3" name="3-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Right-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_demos<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_RECORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--teleop_device<span class="w"> </span>dualhandtracking_abs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In mindmap we additionally track the head yaw from the Apple Vision Pro and retarget it to the robot’s head yaw.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to an issue that prevents running teleoperation together with enabled Isaac Lab cameras, you need to manually comment cameras in the environment configurations.
+Find the <code class="docutils literal notranslate"><span class="pre">robot_pov_cam</span></code> and <code class="docutils literal notranslate"><span class="pre">external_cam</span></code> cameras being configured in
+<a class="reference external" href="https://github.com/nvidia-isaac/nvblox_mindmap/tree/public/mindmap/tasks/task_definitions/drill_in_box/config/gr1/drill_in_box_gr1_env_cfg.py">drill_in_box_gr1_env_cfg.py</a> and
+<a class="reference external" href="https://github.com/nvidia-isaac/nvblox_mindmap/tree/public/mindmap/tasks/task_definitions/stick_in_bin/config/gr1/stick_in_bin_gr1_env_cfg.py">stick_in_bin_gr1_env_cfg.py</a>.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>With the Isaac Lab record script and CloudXR Runtime running, locate and click the “Start AR” button in the Isaac Lab UI (refer to the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/how-to/cloudxr_teleoperation.html#run-isaac-lab-with-the-cloudxr-runtime">Isaac Lab/CloudXR documentation</a>).</p></li>
+<li><p>Connect the Apple Vision Pro to your Isaac Lab workstation and start teleoperating (see the <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/how-to/cloudxr_teleoperation.html#teleoperate-an-isaac-lab-robot-with-apple-vision-pro">Isaac Lab/Apple Vision Pro teleoperation documentation</a>).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To complete a demonstration you need to fullfill the success criteria of the task.
+For <code class="docutils literal notranslate"><span class="pre">Drill</span> <span class="pre">in</span> <span class="pre">Box</span></code> the power drill should be placed in the open box.
+For <code class="docutils literal notranslate"><span class="pre">Stick</span> <span class="pre">in</span> <span class="pre">Bin</span></code> the stick should be placed in the bin.
+In both tasks, after placing the object, you must also lift the robot’s grasping hand up and away from the box or bin to finish the demonstration.</p>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Annotate the subtasks of the recorded demonstrations by following the instructions printed to the terminal after running the following command (for more details, see <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html#annotate-the-demonstrations">this</a>).</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Drill in Box Left</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Drill in Box Right</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">Stick in Bin Left</button><button aria-controls="panel-4-4-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-3" name="4-3" role="tab" tabindex="-1">Stick in Bin Right</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Left-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Right-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Left-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-3" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-3" name="4-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/annotate_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Right-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;RECORD_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="9">
+<li><p>Generate additional demonstrations using Isaac Lab Mimic (for more details, see <a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v2.1.0/source/overview/teleop_imitation.html#generate-the-dataset">Generate the dataset</a> section of the Isaac Lab Mimic documentation):</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Drill in Box Left</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Drill in Box Right</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">Stick in Bin Left</button><button aria-controls="panel-5-5-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-3" name="5-3" role="tab" tabindex="-1">Stick in Bin Right</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Left-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Drill-In-Box-GR1T2-Right-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Left-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-3" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-3" name="5-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Stick-In-Bin-GR1T2-Right-Mimic-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_file<span class="w"> </span>&lt;ANNOTATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_file<span class="w"> </span>&lt;GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable_pinocchio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generation_num_trials<span class="w"> </span>&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--headless<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>cpu
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="10">
+<li><p>Combine the demonstrations for the left and right hand into a single HDF5 file:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>/workspaces/mindmap/mindmap/scripts/merge_hdf5_files.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--inputs<span class="w"> </span>&lt;LEFT_GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span>&lt;RIGHT_GENERATED_HDF5_FILE_PATH&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>&lt;COMBINED_HDF5_FILE_PATH&gt;
+</pre></div>
+</div>
+<p>After completing the above steps, you end up with an HDF5 file containing <code class="docutils literal notranslate"><span class="pre">&lt;NUMBER_OF_DEMOS_TO_GENERATE&gt;</span></code> demonstrations for each hand.
+This file will be needed for <a class="reference internal" href="data_generation.html"><span class="doc">data generation</span></a> and <a class="reference internal" href="closed_loop_evaluation.html"><span class="doc">closed loop evaluation</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="create_task.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating New Tasks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_generation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generating a Dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-franka-demonstrations">Recording Franka Demonstrations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-gr1-demonstrations">Recording GR1 Demonstrations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2025, NVIDIA.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

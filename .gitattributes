@@ -4,3 +4,6 @@
 *.zst filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
+
+# Sphinx-built site images: NOT LFS, but protect from line ending issues
+docs/** -filter -diff -merge binary
