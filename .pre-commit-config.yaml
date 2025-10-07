@@ -1,0 +1,28 @@
+exclude: '\.patch$'
+repos:
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0  # You can specify the latest version here
+    hooks:
+      - id: black
+        args: ['--line-length', '100']
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        require_serial: true
+        # Line length must be the same as used for yapf
+        args: ["--profile", "black", "--filter-files", "--line-length=100"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: check-for-copyright
+        name: Check for Copyright
+        entry: ./check_for_copyright.py
+        language: python
+        types: [file, python]
+        exclude: 'diffuser_actor/.*|pytorch3d_transforms.py'

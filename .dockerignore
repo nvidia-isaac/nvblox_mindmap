@@ -1,0 +1,8 @@
+mindmap/.pytest_cache
+mindmap/generated_datasets
+mindmap/train_logs
+mindmap/training_output
+mindmap/eval
+mindmap/wandb
+**/build
+**/__pycache__

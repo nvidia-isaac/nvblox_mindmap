@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Model Trainer",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/usr/local/bin/torchrun",
+            "cwd": "${workspaceFolder}/mindmap/",
+            "args": [
+                "--standalone",
+                "--nnodes=1",
+                "--nproc_per_node=1",
+                "--master_port=64463",
+                "run_training.py",
+                "--dataset", "/datasets/mindmap/demo_00000",
+                "--valset", "/datasets/mindmap/demo_00000",
+                "--data_type", "mesh",
+                "--batch_size", "2"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"  // Specify which GPU to use/available
+            }
+        }
+    ]
+}
