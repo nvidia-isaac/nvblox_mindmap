@@ -1,0 +1,152 @@
+# syntax=docker/dockerfile:1
+
+ARG BASE_IMAGE=nvblox_core_deps_cuda118_ubuntu22
+FROM $BASE_IMAGE
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm
+
+################################
+# INSTALL APT DEPS
+################################
+
+RUN apt-get update && apt-get install -y \
+    python3-pip=22.* \
+    libglew-dev=2.2.* \
+    libsm6=2:1.2.* \
+    ffmpeg=7:4.4.*
+
+# Adding docker buildkit because we build other images inside this image in CI.
+RUN apt-get update && apt-get install -y \
+    ca-certificates=20240203~22.04.1 \
+    curl=7.* \
+    gnupg=2.* && \
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+    chmod a+r /etc/apt/keyrings/docker.gpg && \
+    echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+    apt-get update && apt install -y \
+    docker.io=27.* \
+    docker-buildx-plugin=0.27.*
+
+################################
+# INSTALL ISAAC-SIM
+################################
+
+# Minimal install (https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U "isaacsim[all,extscache]==4.5.0" --extra-index-url https://pypi.nvidia.com
+
+################################
+# INSTALL ISAAC-LAB
+################################
+
+# Copy the IsacLab from submodules and fix permissions
+COPY submodules/IsaacLab /isaac-lab
+COPY submodules/mindmap-v1.0.0_IsaacLab-v2.1.0.patch /isaac-lab/mindmap-v1.0.0_IsaacLab-v2.1.0.patch
+RUN chmod -R a+rw /isaac-lab
+
+# Add patch to IsaacLab to import mindmap tasks and enable head tracking.
+RUN cd /isaac-lab && patch -N -p1 -r - < mindmap-v1.0.0_IsaacLab-v2.1.0.patch || true
+
+# Installer need "python" command available + toml package
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    pip install toml==0.10.*
+
+# Install the thing
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    cd /isaac-lab && /isaac-lab/isaaclab.sh --install
+
+# Logs and other stuff appear under dist-packages per default, so this dir has to be writeable.
+RUN chmod a+rw /opt/venv/lib/python3.10/site-packages/omni
+
+# Let's accept the EULA since we already know it by heart.
+RUN echo "Y" > /opt/venv/lib/python3.10/site-packages/omni/EULA_ACCEPTED
+
+################################
+# INSTALL MINDMAP DEPS
+################################
+
+# The versioning and inter-dependencies between modules here is a mess. Changing the order of things
+# may cause breakage.
+
+# Install Deep Graph Library for torch
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install dgl==2.4.* -f https://data.dgl.ai/wheels/torch-2.4/cu118/repo.html
+
+# Install CLIP backbone
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U git+https://github.com/openai/clip.git@dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1
+
+# Install pip dependencies
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U \
+    pillow==11.3.* \
+    typed-argument-parser==1.10.* \
+    tqdm==4.67.* \
+    transformers==4.55.* \
+    matplotlib==3.10.* \
+    plotly==6.3.* \
+    scipy==1.15.* \
+    setuptools==57.5.* \
+    beautifulsoup4==4.13.* \
+    pytest==8.4.* \
+    pytest-dependency==0.6.*
+
+
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U \
+    diffusers["torch"]==0.35.* \
+    h5py==3.14.* \
+    importlib_resources==6.5.* \
+    zstandard==0.24.*
+
+# Open3d tries (and fails) to uninstall a system lib. Hence the "--ignore-installed" switch
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python -m pip install open3d==0.19.* --ignore-installed
+
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python -m pip install torchtyping==0.1.* \
+    torchvision==0.19.* \
+    opencv-python==4.11.* \
+    einops==0.8.*
+
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U \
+    # specifying version prevents wandb to throw pydantic error when running closed loop:
+    wandb==0.18.* \
+    pydantic==2.11.* \
+    timm==1.0.*
+
+# catalyst: Need a downgrade of PIP to avoid install error
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install --upgrade pip && \
+    python3 -m pip install pip==21.2.*
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install -U catalyst==22.4.*
+
+# NOTE(remos): restoring numpy version to prevent IsaacSim error:
+#       numpy.dtype size changed, may indicate binary incompatibility.
+#       Expected 96 from C header, got 88 from PyObject
+RUN --mount=type=cache,target=/root/.cache \
+    . /opt/venv/bin/activate && \
+    python3 -m pip install numpy==1.26.*
+
+# Alias for torchrun locally on a random port (unassigned ports range between 49152 and 65535).
+RUN echo 'alias torchrun_local="torchrun --standalone --nnodes 1 --nproc_per_node 1 --master_port $((49152 + $RANDOM % (65535-49152)))"' | tee --append /etc/bash.bashrc
+
+# Set nvidia driver capabilities to all
+ENV NVIDIA_DRIVER_CAPABILITIES=all
