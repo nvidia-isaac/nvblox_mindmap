@@ -154,8 +154,8 @@ class SystemArgs(Tap):
     base_log_dir: pathlib.Path = "/eval/train_logs/"
     # Logging params
     wandb_name: str = None
-    wandb_mode: str = "online"  # One of [online, offline, disabled]
-    wandb_entity: str = "nv-welcome"
+    wandb_mode: str = "disabled"  # One of [online, offline, disabled]
+    wandb_entity: str = None
 
 
 class SimulationArgs(Tap):
